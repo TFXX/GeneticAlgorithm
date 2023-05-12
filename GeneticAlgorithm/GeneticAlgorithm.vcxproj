@@ -143,6 +143,7 @@
     <ClInclude Include="CEnvironment.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="CPopulation.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneticAlgorithm.cpp" />

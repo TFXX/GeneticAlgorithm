@@ -2,19 +2,19 @@
 
 #include "pch.h"
 
-template<size_t geneNum>
+template<size_t geneNum, typename DecodedValueType>
 class CChrom
 {
-public:
-	//constexpr size_t bitNum = bitNum;
 private:
 	std::array<std::int8_t, geneNum> m_genes;
 	std::int32_t m_fitness;
 public:
+	using DecodedValue_t = DecodedValueType;
+public:
 	CChrom()
 	{
 		int8_t random = 0;
-		for(size_t i = 0; i < bitNum; i++)
+		for(size_t i = 0; i < geneNum; i++)
 		{
 			random = rand();
 			random %= 2;
@@ -22,6 +22,8 @@ public:
 
 		}
 	}
+
+	virtual DecodedValue_t decode() = 0;
 
 	void inline set_fitness(std::int32_t fitness)
 	{
@@ -34,8 +36,8 @@ public:
 	}
 };
 
-template<size_t geneNum>
-inline CChrom<geneNum> make_CChrom()
+template<size_t geneNum, typename DecodedValueType>
+inline CChrom<geneNum, DecodedValueType> make_CChrom()
 {
 	return CChrom(geneNum);
 }
